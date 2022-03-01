@@ -1,11 +1,19 @@
 import {FC, useState} from "react";
+import uniqid from 'uniqid';
+
+type Todo = {
+  id: string;
+  input: string;
+  isCompleted: boolean;
+}
 
 type Props = {
   texteInput: string
   buttonLabel: string
+  onSubmit: (todo: Todo) => void;
 }
 
-const InputTodo: FC<Props> = ({texteInput, buttonLabel}) => {
+const InputTodo: FC<Props> = ({texteInput, buttonLabel, onSubmit}) => {
     const [input, setInput] = useState('');
 
     const submitForm = (e) => {
@@ -13,7 +21,7 @@ const InputTodo: FC<Props> = ({texteInput, buttonLabel}) => {
         if(!input.trim()){
             return
         }else{
-          // DO A FUNCTION FOR HANDLE INPUT
+          onSubmit({id: uniqid(),input, isCompleted: false })
         }
     };
 

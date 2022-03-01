@@ -13,4 +13,5 @@ export const Defaults = Template.bind({});
 Defaults.args = {
   texteInput: "Mon Input",
   buttonLabel: "Mon button",
+  onSubmit: () => null
 };
